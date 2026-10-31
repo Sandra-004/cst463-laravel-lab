@@ -5,7 +5,7 @@
 <h2>Student List</h2>
 
 @if(session('status'))
-    <div style="color: green; padding: 10px; border: 1px solid green;">
+    <div style="color: green; padding: 10px;">
         {{ session('status') }}
     </div>
 @endif
