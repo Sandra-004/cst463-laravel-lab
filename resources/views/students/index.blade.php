@@ -5,9 +5,9 @@
 <h2>Student List</h2>
 
 @if(session('status'))
-    <p style="color: green;">
+    <div style="color: green; padding: 10px; border: 1px solid green;">
         {{ session('status') }}
-    </p>
+    </div>
 @endif
 
 <a href="{{ route('students.create') }}">Add Student</a>
