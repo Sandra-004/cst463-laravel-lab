@@ -4,6 +4,11 @@
     <title>Student Details</title>
 </head>
 <body>
+    @if(session('status'))
+    <div style="color: green; padding: 10px;">
+        {{ session('status') }}
+    </div>
+@endif
 
     <h1>Student Details</h1>
 
