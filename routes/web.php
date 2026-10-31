@@ -1,22 +1,32 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\StudentController;
+use App\Models\Student;
 
-/*
-|--------------------------------------------------------------------------
-| ROUTES  — the front door of a Laravel app
-|--------------------------------------------------------------------------
-| Every request (URL + HTTP verb) is matched against this list.
-| The first route that matches decides who handles it:
-|   - a closure (small function written right here), or
-|   - a controller method   [SomeController::class, 'method']
-|
-| See every route:   php artisan route:list
-*/
-
-// Lesson 1: the home page. A closure that returns a view (resources/views/home.blade.php).
 Route::get('/', function () {
     return view('home');
 });
 
-// Lessons 2-6: you will add your routes below this line.
+// PART A - MVC and Routes
+
+Route::get('/hello/{your_name}', function ($your_name) {
+    return "Hello, " . $your_name;
+});
+
+Route::get('/about', [PageController::class, 'about']);
+
+// PART B - Resource Controller
+
+Route::resource('students', StudentController::class);
+// PART C - Explicit Route Model Binding
+
+Route::get('/roll/{your_roll}', function (Student $your_roll) {
+    return view('students.show', ['student' => $your_roll]);
+});
+// PART E - JSON API
+
+Route::get('/api/students', function () {
+    return response()->json(Student::all());
+});
