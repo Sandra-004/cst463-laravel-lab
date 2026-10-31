@@ -22,11 +22,11 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'roll_no' => 'required|unique:students,roll_no',
-            'name' => 'required',
+           'roll_no' => 'required|unique:students,roll_no',
+            'name' => 'required|string',
             'email' => 'required|email|unique:students,email',
-            'department' => 'required',
-            'semester' => 'required|integer',
+            'department' => 'nullable|string',
+            'semester' => 'nullable|integer',
             'cgpa' => 'nullable|numeric|min:0|max:10',
         ]);
 
